@@ -7,45 +7,56 @@
     <title>Form Validator</title>
   </head>
   <body>
-    <div class="form">
-      <h1>Register With Us</h1>
+    <main>
       <form>
-        <label for="username">Username</label>
-        <input
-          type="text"
-          name="username"
-          id="username"
-          placeholder="Enter username"
-          required
-        />
-        <label for="email">Email</label>
-        <input
-          type="text"
-          name="email"
-          id="email"
-          placeholder="Enter email"
-          required
-        />
-
-        <label for="password">Password</label>
-        <input
-          type="text"
-          name="password"
-          id="password"
-          placeholder="Enter password"
-          required
-        />
-        <label for="confirm">Confirm Password</label>
-        <input
-          type="text"
-          name="confirm"
-          id="confirm"
-          placeholder="Enter password again"
-          required
-        />
-        <input type="submit" value="Submit" />
+        <h2>Register With Us</h2>
+        <div class="input-box">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Enter username"
+            required
+          />
+          <small>Username must be at least 3 characters </small>
+        </div>
+        <div class="input-box">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="Enter email"
+            required
+          />
+          <small>Email is not valid </small>
+        </div>
+        <div class="input-box">
+          <label for="password">Password</label>
+          <input
+            type="text"
+            name="password"
+            id="password"
+            placeholder="Enter password"
+            required
+          />
+          <small>Password must be at least 6 characters </small>
+        </div>
+        <div class="input-box">
+          <label for="confirm">Confirm Password</label>
+          <input
+            type="text"
+            name="confirm"
+            id="confirm"
+            placeholder="Enter password again"
+            required
+          />
+          <small>Password2 is required </small>
+        </div>
+        <input type="submit" value="Submit" class="button" />
       </form>
-    </div>
+    </main>
     <script src="index.js"></script>
   </body>
 </html>
