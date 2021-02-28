@@ -53,7 +53,6 @@ label {
 .input-box > input {
   width: 93%;
   padding: 10px;
-  border: 1px solid rgba(1, 1, 1, 0.1);
   border-radius: 3px;
 }
 
@@ -71,6 +70,25 @@ label {
 }
 
 small {
-  display: none;
   color: red;
+}
+
+.visible {
+  display: inline;
+}
+
+.invisible {
+  display: none;
+}
+
+.normal {
+  border: 2px solid rgba(1, 1, 1, 0.1);
+}
+
+.error {
+  border: 2px solid #e74c3c;
+}
+
+.success {
+  border: 2px solid #2ecc71;
 }
