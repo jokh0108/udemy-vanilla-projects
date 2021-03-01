@@ -63,12 +63,12 @@ select {
 }
 
 .theater__screen {
-  border-top: 50px solid white;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  height: 0;
+  background-color: white;
   width: 100%;
-  margin-bottom: 20px;
+  height: 70px;
+  transform: perspective(1000px) rotateX(-45deg);
+  margin-bottom: 15px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 70%);
 }
 
 .theater__seats {
