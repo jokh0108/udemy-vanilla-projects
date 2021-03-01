@@ -1,14 +1,14 @@
-const movieSelect = document.querySelector("#jsMovie");
-const countElement = document.querySelector("#count");
-const totalElement = document.querySelector("#total");
-const seatElements = Array.from(document.querySelectorAll("#jsSeat"));
+const movieSelect = document.querySelector('#jsMovie');
+const countElement = document.querySelector('#count');
+const totalElement = document.querySelector('#total');
+const seatElements = Array.from(document.querySelectorAll('#jsSeat'));
 
-const SELECTED_CLASS = "selected";
-const SELECTED_ATTRIBUTE = "selected";
-const NA_CLASS = "na";
+const SELECTED_CLASS = 'selected';
+const SELECTED_ATTRIBUTE = 'selected';
+const NA_CLASS = 'na';
 
-const PRICE_KEY = "price";
-const SELECTED_SEATS_KEY = "selectedSeats";
+const PRICE_KEY = 'price';
+const SELECTED_SEATS_KEY = 'selectedSeats';
 
 const DEFAULT_PRICE = 10;
 
@@ -65,7 +65,7 @@ const loadPrice = () => {
 
   price = savedPrice;
   const selectedOption = movieSelect.querySelector(`option[value="${price}"]`);
-  selectedOption.setAttribute(SELECTED_ATTRIBUTE, "");
+  selectedOption.setAttribute(SELECTED_ATTRIBUTE, '');
 };
 
 const toggleSeat = (seatElement, selected) => {
@@ -73,7 +73,7 @@ const toggleSeat = (seatElement, selected) => {
     seatElement.removeAttribute(SELECTED_ATTRIBUTE);
     seatElement.classList.replace(SELECTED_CLASS, NA_CLASS);
   } else {
-    seatElement.setAttribute(SELECTED_ATTRIBUTE, "");
+    seatElement.setAttribute(SELECTED_ATTRIBUTE, '');
     seatElement.classList.replace(NA_CLASS, SELECTED_CLASS);
   }
 };
@@ -97,9 +97,9 @@ const loadSeats = () => {
 const init = () => {
   loadPrice();
   loadSeats();
-  movieSelect.addEventListener("change", onMovieSelect);
+  movieSelect.addEventListener('change', onMovieSelect);
   seatElements.forEach((seat) => {
-    seat.addEventListener("click", onClick);
+    seat.addEventListener('click', onClick);
   });
 };
 
