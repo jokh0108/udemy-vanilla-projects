@@ -3,7 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Exchange Rate Calculator</title>
   </head>
-  <body></body>
+  <body>
+    <main>
+      <img src="img/money.png" alt="money logo" />
+      <h2>Exchange Rate Calculator</h2>
+      <div>Choose the currency and the amounts to get the exchange rate</div>
+      <div class="base">
+        <select name="base" id="jsBase"></select>
+        <input type="text" value="1"></input>
+        <button id="jsBaseUp" class="up">up</button>
+        <button id="jsBaseDown" class="down">down</button>
+      </div>
+      <div class="swapper">
+        <button id="jsSwap" class="swap">swap</button>
+        <span id="jsExchange" class="exchange">exchange</span>
+      </div>
+      <div class="relative">
+        <select name="relative" id="jsRelative"></select>
+        <input type="text" value="0.00"></input>
+        <button id="jsRelativeUp" class="up">up</button>
+        <button id="jsRelativeDown" class="down">down</button>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
 </html>
