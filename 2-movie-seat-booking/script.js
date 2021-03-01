@@ -12,9 +12,9 @@ const NA_CLASS = "na";
 let count = 0;
 let price = DEFAULT_PRICE;
 
-const onSelect = (event) => {
+const onMovieSelect = (event) => {
   price = parseInt(event.target.value);
-  updatePrice();
+  updateTotal();
 };
 
 const isSelected = (seatElement) =>
@@ -35,7 +35,7 @@ const updateCount = (selected) => {
   countElement.innerText = count;
 };
 
-const updatePrice = () => {
+const updateTotal = () => {
   totalElement.innerText = count * price;
 };
 
@@ -44,11 +44,11 @@ const onClick = (event) => {
   toggleSelect(selectedSeat);
   const selected = isSelected(selectedSeat);
   updateCount(selected);
-  updatePrice();
+  updateTotal();
 };
 
 const init = () => {
-  movieSelect.addEventListener("change", onSelect);
+  movieSelect.addEventListener("change", onMovieSelect);
   seatElements.forEach((seat) => {
     seat.addEventListener("click", onClick);
   });

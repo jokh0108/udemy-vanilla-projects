@@ -2,17 +2,14 @@ body {
   background-color: #242333fa;
   color: white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-main {
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
+body > * {
+  margin: 20px;
 }
 
 select {
@@ -31,7 +28,7 @@ select {
   background-color: #201f2e;
   border-radius: 5px;
   padding: 5px 15px;
-  width: 70%;
+  width: 220px;
 }
 
 .legend__item {
