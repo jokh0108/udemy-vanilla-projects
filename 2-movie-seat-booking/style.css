@@ -1,0 +1,108 @@
+body {
+  background-color: #242333fa;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+main {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+select {
+  padding: 4px 15px;
+  border-radius: 5px;
+  -o-appearance: none;
+  -ms-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.legend {
+  display: flex;
+  justify-content: space-between;
+  background-color: #201f2e;
+  border-radius: 5px;
+  padding: 5px 15px;
+  width: 70%;
+}
+
+.legend__label {
+  display: flex;
+  font-size: 12px;
+}
+
+.na {
+  background-color: #444451f0;
+}
+
+.selected {
+  background-color: #70eaf6;
+}
+
+.occupied {
+  background-color: white;
+}
+
+.result__number {
+  color: #70eaf6;
+}
+
+.theater {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.theater__screen {
+  width: 100%;
+  height: 60px;
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+.theater__seats {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 12px;
+}
+
+.seat {
+  width: 16px;
+  height: 12px;
+  border-radius: 7px 7px 1px 1px;
+}
+
+.legend__label .seat {
+  margin-right: 3px;
+}
+
+.col-1,
+.col-3 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+}
+
+.col-2 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+}
+
+.theater__seats .seat {
+  margin: 3px;
+}
+
+.theater__seats .seat:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
