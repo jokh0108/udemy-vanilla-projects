@@ -7,94 +7,92 @@
     <title>Document</title>
   </head>
   <body>
-    <main>
-      <div class="menu">
-        <label>Pick a movie:</label>
-        <select name="movie" id="jsMovie">
-          <option value="10">Avengers: Endgame ($10)</option>
-          <option value="12">Joker ($12)</option>
-          <option value="8">Toy Story 4 ($8)</option>
-          <option value="9">The Lion King ($9)</option>
-        </select>
+    <div class="menu">
+      <label>Pick a movie: </label>
+      <select name="movie" id="jsMovie">
+        <option value="10">Avengers: Endgame ($10)</option>
+        <option value="12">Joker ($12)</option>
+        <option value="8">Toy Story 4 ($8)</option>
+        <option value="9">The Lion King ($9)</option>
+      </select>
+    </div>
+    <div class="legend">
+      <div class="legend__item">
+        <div class="seat na"></div>
+        <div class="legend__item__label">N/A</div>
       </div>
-      <div class="legend">
-        <div class="legend__item">
-          <div class="seat na"></div>
-          <div class="legend__item__label">N/A</div>
-        </div>
-        <div class="legend__item">
-          <div class="seat selected"></div>
-          <div class="legend__item__label">Selected</div>
-        </div>
-        <div class="legend__item">
+      <div class="legend__item">
+        <div class="seat selected"></div>
+        <div class="legend__item__label">Selected</div>
+      </div>
+      <div class="legend__item">
+        <div class="seat occupied"></div>
+        <div class="legend__item__label">Occupied</div>
+      </div>
+    </div>
+    <div class="theater">
+      <div class="theater__screen"></div>
+      <div class="theater__seats">
+        <div class="col-1">
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
           <div class="seat occupied"></div>
-          <div class="legend__item__label">Occupied</div>
+          <div class="seat occupied"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+        </div>
+        <div class="col-2">
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat occupied"></div>
+          <div class="seat occupied"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat occupied"></div>
+          <div class="seat occupied"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+        </div>
+        <div class="col-3">
+          <div class="seat occupied"></div>
+          <div class="seat occupied"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat na" id="jsSeat"></div>
+          <div class="seat occupied"></div>
+          <div class="seat occupied"></div>
         </div>
       </div>
-      <div class="theater">
-        <div class="theater__screen"></div>
-        <div class="theater__seats">
-          <div class="col-1">
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat occupied"></div>
-            <div class="seat occupied"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-          </div>
-          <div class="col-2">
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat occupied"></div>
-            <div class="seat occupied"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat occupied"></div>
-            <div class="seat occupied"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-          </div>
-          <div class="col-3">
-            <div class="seat occupied"></div>
-            <div class="seat occupied"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat na" id="jsSeat"></div>
-            <div class="seat occupied"></div>
-            <div class="seat occupied"></div>
-          </div>
-        </div>
-      </div>
-      <div class="result">
-        You have selected <span class="result__number" id="count">0</span> seats
-        for a price of $<span class="result__number" id="total">0</span>
-      </div>
-    </main>
+    </div>
+    <div class="result">
+      You have selected <span class="result__number" id="count">0</span> seats
+      for a price of $<span class="result__number" id="total">0</span>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
