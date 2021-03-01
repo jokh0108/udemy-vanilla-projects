@@ -104,7 +104,7 @@ select {
   margin: 3px;
 }
 
-.theater__seats .seat:hover {
+.theater__seats .seat:hover:not(.occupied) {
   transform: scale(1.2);
   cursor: pointer;
 }
