@@ -1,12 +1,12 @@
-const submit = document.querySelector("#jsSubmit");
-const usernameInput = document.querySelector("#jsUsername");
-const emailInput = document.querySelector("#jsEmail");
-const passwordInput = document.querySelector("#jsPassword");
-const confirmInput = document.querySelector("#jsConfirm");
-const usernameError = document.querySelector("#jsUsernameError");
-const emailError = document.querySelector("#jsEmailError");
-const passwordError = document.querySelector("#jsPasswordError");
-const confirmError = document.querySelector("#jsConfirmError");
+const submit = document.querySelector('#jsSubmit');
+const usernameInput = document.querySelector('#jsUsername');
+const emailInput = document.querySelector('#jsEmail');
+const passwordInput = document.querySelector('#jsPassword');
+const confirmInput = document.querySelector('#jsConfirm');
+const usernameError = document.querySelector('#jsUsernameError');
+const emailError = document.querySelector('#jsEmailError');
+const passwordError = document.querySelector('#jsPasswordError');
+const confirmError = document.querySelector('#jsConfirmError');
 
 const MIN_USERNAME = 3;
 const MAX_USERNAME = 15;
@@ -15,19 +15,19 @@ const MAX_PASSWORD = 25;
 
 const EMAIL_REGEX = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
 const LENGTH_STATUS = Object.freeze({
-  TOO_SHORT: "short",
-  TOO_LONG: "long",
-  ENOUGH: "enough",
+  TOO_SHORT: 'short',
+  TOO_LONG: 'long',
+  ENOUGH: 'enough',
 });
 
-const CONFIRM_NOT_MATCH_MSG = "Passwords do not match";
-const CONFIRM_REQUIRED_MSG = "Password2 is required";
+const CONFIRM_NOT_MATCH_MSG = 'Passwords do not match';
+const CONFIRM_REQUIRED_MSG = 'Password2 is required';
 
-const NORMAL_CLASSNAME = "normal";
-const SUCCESS_CLASSNAME = "success";
-const ERROR_CLASSNAME = "error";
-const VISIBLE_CLASSNAME = "visible";
-const INVISIBLE_CLASSNAME = "invisible";
+const NORMAL_CLASSNAME = 'normal';
+const SUCCESS_CLASSNAME = 'success';
+const ERROR_CLASSNAME = 'error';
+const VISIBLE_CLASSNAME = 'visible';
+const INVISIBLE_CLASSNAME = 'invisible';
 
 const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -119,7 +119,7 @@ const onSubmit = (event) => {
 };
 
 const init = () => {
-  submit.addEventListener("click", onSubmit);
+  submit.addEventListener('click', onSubmit);
 };
 
 init();
