@@ -48,7 +48,6 @@ const checkEmail = (email) => {
 };
 
 const checkRequired = (inputValue) => {
-  console.log(inputValue, Boolean(inputValue));
   return Boolean(inputValue);
 };
 
