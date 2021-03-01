@@ -34,9 +34,13 @@ select {
   width: 70%;
 }
 
-.legend__label {
+.legend__item {
   display: flex;
   font-size: 12px;
+}
+
+.legend__item__label {
+  opacity: 70%;
 }
 
 .na {
@@ -83,7 +87,7 @@ select {
   border-radius: 7px 7px 1px 1px;
 }
 
-.legend__label .seat {
+.legend__item .seat {
   margin-right: 3px;
 }
 
