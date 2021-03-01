@@ -1,0 +1,51 @@
+h1,
+.exchange {
+  color: #5fbaa7;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+}
+
+.base,
+.swapper,
+.relative {
+  width: 30%;
+  margin: 30px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+select {
+  border: 1px solid #2f2f2f2f;
+  font-size: 15px;
+  padding: 5px;
+}
+
+.swap {
+  color: white;
+  background-color: #5fbaa7;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+input {
+  text-align: right;
+  border: none;
+  font-size: 25px;
+}
+
+input:focus {
+  outline: none;
+}
