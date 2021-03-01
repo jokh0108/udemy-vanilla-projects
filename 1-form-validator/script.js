@@ -29,14 +29,37 @@ const ERROR_CLASSNAME = "error";
 const VISIBLE_CLASSNAME = "visible";
 const INVISIBLE_CLASSNAME = "invisible";
 
-const checkLength = (string, min, max) => {
-  if (string.length < min) {
-    return LENGTH_STATUS.TOO_SHORT;
+const capitalizeFirstLetter = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+const showValidation = (status, input, error, min, max) => {
+  const inputLabel = capitalizeFirstLetter(input.name);
+  switch (status) {
+    case LENGTH_STATUS.ENOUGH:
+      showSuccess(input, error);
+      break;
+    case LENGTH_STATUS.TOO_SHORT:
+      error.innerText = `${inputLabel} must be at least ${min} characters`;
+      showError(input, error);
+      break;
+    default:
+      error.innerText = `${inputLabel} must be less than ${max} characters`;
+      showError(input, error);
   }
-  if (string.length >= max) {
-    return LENGTH_STATUS.TOO_LONG;
+};
+
+const checkLength = (input, error, min, max) => {
+  if (input.value.length < min) {
+    showValidation(LENGTH_STATUS.TOO_SHORT, input, error, min, max);
+    return;
   }
-  return LENGTH_STATUS.ENOUGH;
+  if (input.value.length >= max) {
+    showValidation(LENGTH_STATUS.TOO_LONG, input, error, min, max);
+    return;
+  }
+  showValidation(LENGTH_STATUS.ENOUGH, input, error, min, max);
+  return;
 };
 
 const checkEmail = (email) => {
@@ -72,23 +95,7 @@ const showSuccess = (inputElement, errorElement) => {
 const onSubmit = (event) => {
   event.preventDefault();
 
-  const usernameStatus = checkLength(
-    usernameInput.value,
-    MIN_USERNAME,
-    MAX_USERNAME
-  );
-  switch (usernameStatus) {
-    case LENGTH_STATUS.ENOUGH:
-      showSuccess(usernameInput, usernameError);
-      break;
-    case LENGTH_STATUS.TOO_SHORT:
-      usernameError.innerText = `Username must be at least ${MIN_USERNAME} characters`;
-      showError(usernameInput, usernameError);
-      break;
-    default:
-      usernameError.innerText = `Username must be less than ${MAX_USERNAME} characters`;
-      showError(usernameInput, usernameError);
-  }
+  checkLength(usernameInput, usernameError, MIN_USERNAME, MAX_USERNAME);
 
   if (checkEmail(emailInput.value)) {
     showSuccess(emailInput, emailError);
@@ -96,23 +103,7 @@ const onSubmit = (event) => {
     showError(emailInput, emailError);
   }
 
-  const passwordStatus = checkLength(
-    passwordInput.value,
-    MIN_PASSWORD,
-    MAX_PASSWORD
-  );
-  switch (passwordStatus) {
-    case LENGTH_STATUS.ENOUGH:
-      showSuccess(passwordInput, passwordError);
-      break;
-    case LENGTH_STATUS.TOO_SHORT:
-      passwordError.innerText = `password must be at least ${MIN_PASSWORD} characters`;
-      showError(passwordInput, passwordError);
-      break;
-    default:
-      passwordError.innerText = `password must be less than ${MAX_PASSWORD} characters`;
-      showError(passwordInput, passwordError);
-  }
+  checkLength(passwordInput, passwordError, MIN_PASSWORD, MAX_PASSWORD);
 
   if (checkRequired(confirmInput.value)) {
     if (checkPasswordsMatch(passwordInput.value, confirmInput.value)) {
