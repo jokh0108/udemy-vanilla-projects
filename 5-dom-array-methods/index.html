@@ -11,11 +11,13 @@
       <h1>DOM Array Methods</h1>
       <main>
         <aside>
-          <div class="manipulation">Add User 👨‍🦰</div>
-          <div class="manipulation">Double Money 💰</div>
-          <div class="manipulation">Show Only Millionaries 💵</div>
-          <div class="manipulation">Sort by Richest ↓</div>
-          <div class="manipulation">Calculate entire Wealth 🧮</div>
+          <div class="manipulation" id="jsAdd">Add User 👨‍🦰</div>
+          <div class="manipulation" id="jsDouble">Double Money 💰</div>
+          <div class="manipulation" id="jsFilter">
+            Show Only Millionaries 💵
+          </div>
+          <div class="manipulation" id="jsSort">Sort by Richest ⬇</div>
+          <div class="manipulation" id="jsSum">Calculate entire Wealth 🧮</div>
         </aside>
         <hr class="solid column" />
         <div class="table">
@@ -24,12 +26,7 @@
             <div class="wealth">Wealth</div>
           </div>
           <hr class="solid row" />
-          <div class="rows">
-            <div class="row">
-              <div class="name">name</div>
-              <div class="money">$11.00</div>
-            </div>
-          </div>
+          <div class="rows" id="jsRows"></div>
         </div>
       </main>
     </div>
