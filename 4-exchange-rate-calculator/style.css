@@ -19,7 +19,7 @@ body {
 
 .base,
 .swapper,
-.relative {
+.target {
   width: 30%;
   margin: 30px 0;
   display: flex;
