@@ -40,6 +40,10 @@ select {
   padding: 5px 10px;
 }
 
+.exchange {
+  margin-right: 15px;
+}
+
 input {
   text-align: right;
   border: none;
