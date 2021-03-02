@@ -2,9 +2,14 @@ const searchField = document.querySelector('#jsSearchField');
 const searchButton = document.querySelector('#jsSearchButton');
 const randomButton = document.querySelector('#jsRandomButton');
 const searchSection = document.querySelector('#jsSearchSection');
+const mealElement = document.querySelector('#jsMeal');
 const mainElement = document.querySelector('main');
 
 const IMG_WIDTH = (IMG_HEIGHT = 175);
+
+const RANDOM_API = 'https://www.themealdb.com/api/json/v1/1/random.php';
+
+// TODO: use constants
 
 let results = [];
 
@@ -32,7 +37,6 @@ const range = (n) => [...Array(n).keys()];
 const isEmpty = (array) => array.length <= 0;
 
 const makeMealElment = (meal) => {
-  const mealElement = document.createElement('div');
   const { strMeal, strCategory, strArea, strInstructions, strMealThumb } = meal;
   const ingredients = range(20)
     .map((i) => {
@@ -46,8 +50,6 @@ const makeMealElment = (meal) => {
       return `${ingredient} - ${measure}`.trim();
     })
     .filter((ingredient) => Boolean(ingredient));
-
-  console.log(ingredients);
 
   const mealName = document.createElement('h2');
   mealName.innerText = strMeal;
@@ -79,7 +81,7 @@ const makeMealElment = (meal) => {
   ingredientsLabel.innerText = 'Ingredients';
 
   const mealIngredients = document.createElement('div');
-  mealIngredients.classList.add('meal__instructions');
+  mealIngredients.classList.add('meal__ingredients');
 
   ingredients.forEach((ingredient) => {
     const ingredientElement = document.createElement('div');
@@ -101,14 +103,8 @@ const makeMealElment = (meal) => {
 };
 
 const showMeal = (meal) => {
-  const oldMealElement = mainElement.querySelector('.meal');
-  console.log(oldMealElement);
-  if (oldMealElement) {
-    mainElement.removeChild(oldMealElement);
-  }
-  const mealElement = makeMealElment(meal);
-  console.log(mealElement);
-  mainElement.appendChild(mealElement);
+  mealElement.innerHTML = '';
+  makeMealElment(meal);
 };
 
 const onClick = (event) => {
@@ -175,10 +171,21 @@ const onSearch = async () => {
   }
 };
 
+const onShuffle = async () => {
+  try {
+    const res = await fetch(RANDOM_API);
+    const { meals } = await res.json();
+    searchSection.innerHTML = '';
+    showMeal(meals[0]);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const init = async () => {
   searchField.addEventListener('keyup', onKeyup);
   searchButton.addEventListener('click', onSearch);
-  // TODO: activate random button
+  randomButton.addEventListener('click', onShuffle);
 };
 
 init();
