@@ -7,13 +7,25 @@ const sumButton = document.querySelector('#jsSum');
 
 let people;
 
+const INITIAL_USER = 3;
+const WEALTH_MIN = 10000;
+const WEALTH_RANGE = 800000;
+
+const NAME_CLASSNAME = 'name';
+const MONEY_CLASSNAME = 'money';
+const ROW_CLASSNAME = 'row';
+const TOTAL_CLASSNAME = 'total';
+const ROWS_TOTAL_CLASSNAME = 'rows__total';
+
+const TOTAL_LABEL = 'Total Wealth:';
+
 const addUser = async (count) => {
   const res = await fetch(`https://randomuser.me/api/?results=${count}`);
   const { results } = await res.json();
   return results.map(({ name: { first, last } }) => {
     return {
       name: `${first} ${last}`,
-      wealth: Math.floor(10000 + Math.random() * 800000),
+      wealth: Math.floor(WEALTH_MIN + Math.random() * WEALTH_RANGE),
     };
   });
 };
@@ -24,13 +36,13 @@ const createRow = (name, wealth) => {
   const moneyElement = document.createElement('div');
 
   nameElement.innerText = name;
-  nameElement.classList.add('name');
+  nameElement.classList.add(NAME_CLASSNAME);
   moneyElement.innerText = `$${wealth.toLocaleString()}.00`;
-  moneyElement.classList.add('money');
+  moneyElement.classList.add(MONEY_CLASSNAME);
 
   rowElement.appendChild(nameElement);
   rowElement.appendChild(moneyElement);
-  rowElement.classList.add('row');
+  rowElement.classList.add(ROW_CLASSNAME);
   return rowElement;
 };
 
@@ -39,14 +51,14 @@ const createTotal = (total) => {
   const labelElement = document.createElement('label');
   const totalElement = document.createElement('div');
 
-  labelElement.innerText = 'Total Wealth:';
+  labelElement.innerText = TOTAL_LABEL;
   totalElement.innerText = `$${total.toLocaleString()}.00`;
-  totalElement.classList.add('total');
+  totalElement.classList.add(TOTAL_CLASSNAME);
 
   rowElement.appendChild(labelElement);
   rowElement.appendChild(totalElement);
-  rowElement.classList.add('row');
-  rowElement.classList.add('rows__total');
+  rowElement.classList.add(ROW_CLASSNAME);
+  rowElement.classList.add(ROWS_TOTAL_CLASSNAME);
   return rowElement;
 };
 
@@ -85,7 +97,7 @@ const sortUser = () => {
 };
 
 const sumWealth = () => {
-  if (rowsElement.querySelector('.rows__total')) {
+  if (rowsElement.querySelector(`.${ROWS_TOTAL_CLASSNAME}`)) {
     return;
   }
   const total = people.reduce((sum, { wealth }) => {
@@ -96,7 +108,7 @@ const sumWealth = () => {
 };
 
 const init = async () => {
-  people = await addUser(3);
+  people = await addUser(INITIAL_USER);
   showPeople();
   addButton.addEventListener('click', addOneUser);
   doubleButton.addEventListener('click', doubleWealth);
