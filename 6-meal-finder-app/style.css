@@ -14,7 +14,8 @@ main {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   font-weight: bold;
 }
 
@@ -108,24 +109,24 @@ button {
 }
 
 .meal__features__category,
-.meal__features__area,
-.meal__instructions {
+.meal__features__area {
   font-size: 20px;
 }
 
 .meal__ingredients {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  text-align: center;
 }
 
 .ingredient {
+  display: inline-block;
   background-color: white;
   padding: 5px 10px;
   border-radius: 3px;
   margin: 5px;
   color: black;
   font-weight: bold;
+  font-size: 12px;
 }
 
 .unshow {
