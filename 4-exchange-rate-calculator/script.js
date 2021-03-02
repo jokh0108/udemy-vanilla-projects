@@ -65,8 +65,12 @@ const swap = async () => {
   updateTotal(amounts);
 };
 
-const onChange = () => {
+const onBaseChange = () => {
   amounts = parseFloat(baseInput.value);
+  updateTotal(amounts);
+};
+
+const onTargetChange = () => {
   updateTotal(amounts);
 };
 
@@ -82,8 +86,8 @@ const init = async () => {
   baseSelect.addEventListener('change', onBaseSelect);
   targetSelect.addEventListener('change', onTargetSelect);
   swapButton.addEventListener('click', swap);
-  baseInput.addEventListener('input', onChange);
-  // TODO: disable targetNumber change
+  baseInput.addEventListener('input', onBaseChange);
+  targetNumber.addEventListener('input', onTargetChange);
 };
 
 init();
