@@ -115,7 +115,8 @@ button {
 
 .meal__ingredients {
   display: flex;
-  text-align: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .ingredient {
