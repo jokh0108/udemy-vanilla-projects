@@ -6,10 +6,27 @@ const mealElement = document.querySelector('#jsMeal');
 const mainElement = document.querySelector('main');
 
 const IMG_WIDTH = (IMG_HEIGHT = 175);
+const MAX_INGREDIENTS = 20;
+
+const MEAL_CLASSNAME = 'meal';
+const MEAL_NAME_CLASSNAME = 'meal__name';
+const MEAL_THUMBNAIL_CLASSNAME = 'meal__thumbnail';
+const MEAL_FEATURES_CLASSNAME = 'meal__features';
+const MEAL_CATEGORY_CLASSNAME = 'meal__features__category';
+const MEAL_AREA_CLASSNAME = 'meal__features__area';
+const MEAL_INSTRUCTIONS_CLASSNAME = 'meal__instructions';
+const MEAL_INGREDIENTS_CLASSNAME = 'meal__ingredients';
+const INGREDIENT_CLASSNAME = 'ingredient';
+const FADEIN_CLASSNAME = 'fadeIn';
+const RESULT_CLASSNAME = 'result';
+const RESULTS_CLASSNAME = 'results';
+
+const NO_RESULTS_MESSAGE = 'There are no search results. Try again!';
+const ALERT_MESSAGE = 'Please enter a search term';
+
+const INGREDIENTS_LABEL = 'Ingredients';
 
 const RANDOM_API = 'https://www.themealdb.com/api/json/v1/1/random.php';
-
-// TODO: use constants
 
 let results = [];
 
@@ -38,7 +55,7 @@ const isEmpty = (array) => array.length <= 0;
 
 const makeMealElment = (meal) => {
   const { strMeal, strCategory, strArea, strInstructions, strMealThumb } = meal;
-  const ingredients = range(20)
+  const ingredients = range(MAX_INGREDIENTS)
     .map((i) => {
       const {
         [`strIngredient${i + 1}`]: ingredient,
@@ -53,40 +70,40 @@ const makeMealElment = (meal) => {
 
   const mealName = document.createElement('h2');
   mealName.innerText = strMeal;
-  mealName.classList.add('meal__name');
+  mealName.classList.add(MEAL_NAME_CLASSNAME);
 
   const mealThumbnail = new Image();
   mealThumbnail.src = strMealThumb;
-  mealThumbnail.classList.add('meal__thumbnail');
+  mealThumbnail.classList.add(MEAL_THUMBNAIL_CLASSNAME);
 
   const mealFeatures = document.createElement('div');
-  mealFeatures.classList.add('meal__features');
+  mealFeatures.classList.add(MEAL_FEATURES_CLASSNAME);
 
   const mealCategory = document.createElement('div');
   mealCategory.innerText = strCategory;
-  mealCategory.classList.add('meal__features__category');
+  mealCategory.classList.add(MEAL_CATEGORY_CLASSNAME);
 
   const mealArea = document.createElement('div');
   mealArea.innerText = strArea;
-  mealArea.classList.add('meal__features__area');
+  mealArea.classList.add(MEAL_AREA_CLASSNAME);
 
   mealFeatures.appendChild(mealCategory);
   mealFeatures.appendChild(mealArea);
 
   const mealInstructions = document.createElement('div');
   mealInstructions.innerText = strInstructions;
-  mealInstructions.classList.add('meal__instructions');
+  mealInstructions.classList.add(MEAL_INSTRUCTIONS_CLASSNAME);
 
   const ingredientsLabel = document.createElement('h3');
-  ingredientsLabel.innerText = 'Ingredients';
+  ingredientsLabel.innerText = INGREDIENTS_LABEL;
 
   const mealIngredients = document.createElement('div');
-  mealIngredients.classList.add('meal__ingredients');
+  mealIngredients.classList.add(MEAL_INGREDIENTS_CLASSNAME);
 
   ingredients.forEach((ingredient) => {
     const ingredientElement = document.createElement('div');
     ingredientElement.innerText = ingredient;
-    ingredientElement.classList.add('ingredient');
+    ingredientElement.classList.add(INGREDIENT_CLASSNAME);
     mealIngredients.appendChild(ingredientElement);
   });
 
@@ -97,7 +114,7 @@ const makeMealElment = (meal) => {
   mealElement.appendChild(ingredientsLabel);
   mealElement.appendChild(mealIngredients);
 
-  mealElement.classList.add('meal');
+  mealElement.classList.add(MEAL_CLASSNAME);
 
   return mealElement;
 };
@@ -116,7 +133,7 @@ const onClick = (event) => {
 const makeResultLabel = (isEmpty, keyword) => {
   const label = document.createElement('h2');
   label.innerText = isEmpty
-    ? 'There are no search results. Try again!'
+    ? NO_RESULTS_MESSAGE
     : `Search results for '${keyword}':`;
   return label;
 };
@@ -133,8 +150,8 @@ const makeResultsElement = () => {
     fadeInElement.innerText = strMeal;
     resultElement.id = idMeal;
 
-    fadeInElement.classList.add('fadeIn');
-    resultElement.classList.add('result');
+    fadeInElement.classList.add(FADEIN_CLASSNAME);
+    resultElement.classList.add(RESULT_CLASSNAME);
 
     resultElement.addEventListener('click', onClick);
 
@@ -142,7 +159,7 @@ const makeResultsElement = () => {
     resultElement.appendChild(image);
     resultsElement.appendChild(resultElement);
   });
-  resultsElement.classList.add('results');
+  resultsElement.classList.add(RESULTS_CLASSNAME);
   return resultsElement;
 };
 
@@ -159,7 +176,7 @@ const onSearch = async () => {
   try {
     const keyword = searchField.value;
     if (!keyword) {
-      alert('Please enter a search term');
+      alert(ALERT_MESSAGE);
       return;
     }
     results = await searchMeals(keyword);
