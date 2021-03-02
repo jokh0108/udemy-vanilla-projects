@@ -6,6 +6,7 @@ const baseInput = document.querySelector('#jsBaseInput');
 const targetNumber = document.querySelector('#jsTargetNumber');
 
 const API_KEY = 'd6c5edaf7b49fcfe8528d869';
+const LOADING_MESSAGE = 'Loading...';
 
 let rate;
 let baseCurrency;
@@ -34,8 +35,7 @@ const updateTotal = (amounts) => {
 };
 
 const showLoading = () => {
-  exchange.innerText = 'loading...';
-  // TODO: use const
+  exchange.innerText = LOADING_MESSAGE;
 };
 
 const onBaseSelect = async (event) => {
