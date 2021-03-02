@@ -49,6 +49,10 @@ main {
   justify-content: space-between;
 }
 
+.row {
+  margin-bottom: 10px;
+}
+
 .person,
 .name {
   font-weight: bold;
@@ -57,4 +61,14 @@ main {
 .person,
 .wealth {
   font-size: 20px;
+}
+
+.rows__total {
+  background-color: white;
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+
+.total {
+  font-weight: bold;
 }

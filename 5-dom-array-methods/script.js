@@ -34,6 +34,22 @@ const createRow = (name, wealth) => {
   return rowElement;
 };
 
+const createTotal = (total) => {
+  const rowElement = document.createElement('div');
+  const labelElement = document.createElement('label');
+  const totalElement = document.createElement('div');
+
+  labelElement.innerText = 'Total Wealth:';
+  totalElement.innerText = `$${total.toLocaleString()}.00`;
+  totalElement.classList.add('total');
+
+  rowElement.appendChild(labelElement);
+  rowElement.appendChild(totalElement);
+  rowElement.classList.add('row');
+  rowElement.classList.add('rows__total');
+  return rowElement;
+};
+
 const showPeople = () => {
   rowsElement.innerHTML = '';
   people.forEach(({ name, wealth }) => {
@@ -45,7 +61,6 @@ const showPeople = () => {
 const addOneUser = async () => {
   const newUsers = await addUser(1);
   people = [...people, ...newUsers];
-  console.log(people);
   showPeople();
 };
 
@@ -70,7 +85,14 @@ const sortUser = () => {
 };
 
 const sumWealth = () => {
-  showPeople();
+  if (rowsElement.querySelector('.rows__total')) {
+    return;
+  }
+  const total = people.reduce((sum, { wealth }) => {
+    return sum + wealth;
+  }, 0);
+  const totalElement = createTotal(total);
+  rowsElement.appendChild(totalElement);
 };
 
 const init = async () => {
