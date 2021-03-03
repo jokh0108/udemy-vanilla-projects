@@ -1,6 +1,7 @@
 :root {
   --blue: #296ca7;
   --skyblue: #4a92d3;
+  --box-shadow: 0 2px 4px rgb(0 0 0 / 30%);
 }
 
 * {
@@ -42,6 +43,7 @@ li.post__item {
   position: relative;
   background-color: var(--skyblue);
   margin: 40px 0;
+  box-shadow: var(--box-shadow);
 }
 
 .post__item__number {
