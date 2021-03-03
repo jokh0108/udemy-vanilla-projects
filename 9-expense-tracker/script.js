@@ -1,55 +1,89 @@
-const balance = document.querySelector('#jsBalance');
-const income = document.querySelector('#jsIncome');
-const expense = document.querySelector('#jsExpense');
+const balanceElement = document.querySelector('#jsBalance');
+const incomeElement = document.querySelector('#jsIncome');
+const expenseElement = document.querySelector('#jsExpense');
 const textInput = document.querySelector('#jsTextInput');
 const amountInput = document.querySelector('#jsAmountInput');
 const addButton = document.querySelector('#jsAdd');
 const historyElement = document.querySelector('#jsHistory');
 
-console.log(balance, income, expense, textInput, amountInput, addButton);
+const TYPE = Object.freeze({
+  INCOME: 'income',
+  EXPENSE: 'expense',
+});
 
-let history;
-// let transactions = [
-//   { type: INCOME, value: 1 },
-//   { type: EXPENSE, value: 1 },
-// ];
+const generateRandom = () => Math.random().toString().substr(2, 10);
+
+let transactions = [
+  { id: generateRandom(), type: TYPE.INCOME, amount: 1, text: 'income' },
+  { id: generateRandom(), type: TYPE.EXPENSE, amount: -1, text: 'expense' },
+  { id: generateRandom(), type: TYPE.INCOME, amount: 38, text: 'income' },
+  { id: generateRandom(), type: TYPE.EXPENSE, amount: -11, text: 'expense' },
+  { id: generateRandom(), type: TYPE.INCOME, amount: 42, text: 'income' },
+  { id: generateRandom(), type: TYPE.EXPENSE, amount: -31, text: 'expense' },
+];
+
 let text;
 let amount;
 
-const onInputText = (event) => {
+const onTextInput = (event) => {
   text = event.target.value;
 };
 
-const onInputAmount = (event) => {
+const onAmountInput = (event) => {
   amount = parseInt(event.target.value);
 };
 
 const isPositive = (value) => value >= 0;
 
-const updateHistory = (text, amount) => {
-  const deleteButton = document.createElement('div');
-  deleteButton.innerText = 'X';
-  deleteButton.classList.add('history__item__delete');
-  deleteButton.classList.add('fade-in');
+const renderBalance = () => {
+  const balance = transactions.reduce((sum, { amount }) => sum + amount, 0);
+  balanceElement.innerText = `$${balance.toFixed(2)}`;
+};
 
-  const nameElement = document.createElement('div');
-  nameElement.innerText = text;
-  nameElement.classList.add('history__item__name');
+const renderTotal = () => {
+  const income = transactions
+    .filter((transaction) => transaction.type === TYPE.INCOME)
+    .reduce((sum, { amount }) => sum + amount, 0);
+  const expense = transactions
+    .filter((transaction) => transaction.type === TYPE.EXPENSE)
+    .reduce((sum, { amount }) => sum + amount, 0);
+  incomeElement.innerText = `$${income.toFixed(2)}`;
+  expenseElement.innerText = `$${(-expense).toFixed(2)}`;
+};
 
-  const amountElement = document.createElement('div');
-  amountElement.innerText = isPositive(amount) ? `+${amount}` : amount;
-  amountElement.classList.add('history__item__amount');
+const renderHistory = () => {
+  historyElement.innerHTML = '';
+  transactions.forEach(({ id, type, amount, text }) => {
+    const deleteButton = document.createElement('div');
+    deleteButton.innerText = 'X';
+    deleteButton.classList.add('history__item__delete');
+    deleteButton.classList.add('fade-in');
+    // TODO: make fadein effect
 
-  const historyItem = document.createElement('div');
-  historyItem.appendChild(deleteButton);
-  historyItem.appendChild(nameElement);
-  historyItem.appendChild(amountElement);
-  historyItem.classList.add('history__item');
-  historyItem.classList.add(
-    `history__item-${isPositive(amount) ? 'income' : 'expense'}`
-  );
+    const nameElement = document.createElement('div');
+    nameElement.innerText = text;
+    nameElement.classList.add('history__item__name');
 
-  historyElement.appendChild(historyItem);
+    const amountElement = document.createElement('div');
+    amountElement.innerText = type === TYPE.INCOME ? `+${amount}` : amount;
+    amountElement.classList.add('history__item__amount');
+
+    const historyItem = document.createElement('div');
+    historyItem.appendChild(deleteButton);
+    historyItem.appendChild(nameElement);
+    historyItem.appendChild(amountElement);
+    historyItem.classList.add('history__item');
+    historyItem.classList.add(`history__item-${type}`);
+    historyItem.id = id;
+
+    historyElement.appendChild(historyItem);
+  });
+};
+
+const renderExpense = () => {
+  renderBalance();
+  renderTotal();
+  renderHistory();
 };
 
 const clearInput = () => {
@@ -59,26 +93,30 @@ const clearInput = () => {
   amonut = 0;
 };
 
+const addTransaction = (text, amount) => {
+  transactions = [
+    ...transactions,
+    { type: isPositive(amount) ? TYPE.INCOME : TYPE.EXPENSE, amount, text },
+  ];
+};
+
 const onClick = (event) => {
   event.preventDefault();
-  console.log('click');
-  console.log(
-    textInput.value || amountInput.value,
-    textInput.value,
-    amountInput.value
-  );
   if (!textInput.value || !amountInput.value) {
     alert('Please add a text and amount');
     return;
   }
-  console.log(text, amount);
-  updateHistory(text, amount);
+  addTransaction(text, amount);
+  renderExpense();
   clearInput();
+  console.log(transactions);
 };
 
 const init = () => {
-  textInput.addEventListener('input', onInputText);
-  amountInput.addEventListener('input', onInputAmount);
+  // TODO: Use localstorsage
+  renderExpense();
+  textInput.addEventListener('input', onTextInput);
+  amountInput.addEventListener('input', onAmountInput);
   addButton.addEventListener('click', onClick);
 };
 
