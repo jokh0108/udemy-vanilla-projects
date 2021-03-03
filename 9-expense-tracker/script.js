@@ -13,15 +13,16 @@ const TYPE = Object.freeze({
 
 const generateRandom = () => Math.random().toString(36).substr(2, 10);
 
-let transactions = [
-  { id: generateRandom(), type: TYPE.INCOME, amount: 38, text: 'bitcoin sell' },
-  { id: generateRandom(), type: TYPE.EXPENSE, amount: -11, text: 'book' },
-  { id: generateRandom(), type: TYPE.INCOME, amount: 42, text: 'stock sell' },
-  { id: generateRandom(), type: TYPE.EXPENSE, amount: -31, text: 'beef' },
-];
+let transactions = [];
 
 let text;
 let amount;
+
+//TODO: use contatns
+
+const saveTransactions = () => {
+  localStorage.setItem('transactions', JSON.stringify(transactions));
+};
 
 const addTransaction = (text, amount) => {
   transactions = [
@@ -33,10 +34,12 @@ const addTransaction = (text, amount) => {
       text,
     },
   ];
+  saveTransactions();
 };
 
 const removeTransaction = (id) => {
   transactions = transactions.filter((transaction) => transaction.id !== id);
+  saveTransactions();
 };
 
 const isPositive = (value) => value >= 0;
@@ -115,7 +118,6 @@ const onClick = (event) => {
   addTransaction(text, amount);
   renderApp();
   clearInput();
-  console.log(transactions);
 };
 
 const onTextInput = (event) => {
@@ -127,7 +129,10 @@ const onAmountInput = (event) => {
 };
 
 const init = () => {
-  // TODO: Use localstorsage
+  const savedTransactions = JSON.parse(localStorage.getItem('transactions'));
+  if (savedTransactions) {
+    transactions = savedTransactions;
+  }
   renderApp();
   textInput.addEventListener('input', onTextInput);
   amountInput.addEventListener('input', onAmountInput);
