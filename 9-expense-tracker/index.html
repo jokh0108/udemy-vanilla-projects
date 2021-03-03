@@ -10,15 +10,15 @@
     <div id="wrap">
       <h2 class="title">Expense Tracker</h2>
       <div>YOUR BALANCE</div>
-      <h2 class="balance">$0.00</h2>
+      <h2 class="balance" id="jsBalance">$0.00</h2>
       <div class="total">
         <div class="total__income">
           <div class="income-label">INCOME</div>
-          <div class="income-amount">$0.00</div>
+          <div class="income-amount" id="jsIncome">$0.00</div>
         </div>
         <div class="total__expense">
           <div class="expense-label">EXPENSE</div>
-          <div class="expense-amount">$0.00</div>
+          <div class="expense-amount" id="jsExpense">$0.00</div>
         </div>
       </div>
       <div class="history">
@@ -37,15 +37,15 @@
       <form class="transaction">
         <h3 class="transaction__title">Add new transaction</h3>
         <label>Text</label>
-        <input type="text" placeholder="Enter text..." />
+        <input type="text" placeholder="Enter text..." id="jsTextInput" />
         <label>
           Amount <br />
           (negative - expense, positive - income)
         </label>
-        <input type="text" placeholder="Enter amount..." />
-        <button>Add transaction</button>
+        <input type="text" placeholder="Enter amount..." id="jsAmountInput" />
+        <button id="jsAdd">Add transaction</button>
       </form>
-      <script src="scripts.js"></script>
+      <script src="script.js"></script>
     </div>
   </body>
 </html>
