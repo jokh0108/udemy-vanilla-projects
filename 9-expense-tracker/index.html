@@ -21,8 +21,8 @@
           <div class="expense-amount" id="jsExpense">$0.00</div>
         </div>
       </div>
-      <div class="history">
-        <h3 class="history__title">History</h3>
+      <h3 class="history-title">History</h3>
+      <div class="history" id="jsHistory">
         <div class="history__item history__item-income">
           <div class="history__item__delete fade-in">X</div>
           <div class="history__item__name">income</div>
@@ -42,7 +42,7 @@
           Amount <br />
           (negative - expense, positive - income)
         </label>
-        <input type="text" placeholder="Enter amount..." id="jsAmountInput" />
+        <input type="number" placeholder="Enter amount..." id="jsAmountInput" />
         <button id="jsAdd">Add transaction</button>
       </form>
       <script src="script.js"></script>
