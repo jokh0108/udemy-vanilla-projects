@@ -8,28 +8,34 @@
   </head>
   <body>
     <div id="wrap">
-      <h2>Expense Tracker</h2>
-      <h3>YOUR BALANCE</h3>
-      <div class="balance">$0.00</div>
+      <h2 class="title">Expense Tracker</h2>
+      <div>YOUR BALANCE</div>
+      <h2 class="balance">$0.00</h2>
       <div class="total">
-        <div class="income-label">INCOME</div>
-        <div class="income-amount">$0.00</div>
-        <hr />
-        <div class="expense-label">EXPENSE</div>
-        <div class="expense-amount">$0.00</div>
+        <div class="total__income">
+          <div class="income-label">INCOME</div>
+          <div class="income-amount">$0.00</div>
+        </div>
+        <div class="total__expense">
+          <div class="expense-label">EXPENSE</div>
+          <div class="expense-amount">$0.00</div>
+        </div>
       </div>
       <div class="history">
-        <hr />
+        <h3 class="history__title">History</h3>
         <div class="history__item history__item-income">
+          <div class="history__item__delete fade-in">X</div>
           <div class="history__item__name">income</div>
           <div class="history__item__amount">+12</div>
         </div>
         <div class="history__item history__item-expense">
+          <div class="history__item__delete fade-in">X</div>
           <div class="history__item__name">expense</div>
           <div class="history__item__amount">-12</div>
         </div>
       </div>
-      <form class="transaction-form">
+      <form class="transaction">
+        <h3 class="transaction__title">Add new transaction</h3>
         <label>Text</label>
         <input type="text" placeholder="Enter text..." />
         <label>
@@ -39,7 +45,7 @@
         <input type="text" placeholder="Enter amount..." />
         <button>Add transaction</button>
       </form>
+      <script src="scripts.js"></script>
     </div>
-    <script src="scripts.js"></script>
   </body>
 </html>
