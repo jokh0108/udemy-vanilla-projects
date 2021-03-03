@@ -11,17 +11,26 @@ const TYPE = Object.freeze({
   EXPENSE: 'expense',
 });
 
-const generateRandom = () => Math.random().toString(36).substr(2, 10);
+const DEL_BUTTON_TEXT = 'X';
+
+const HISOTRY_DEL_CLASSNAME = 'history__item__delete';
+const HISOTRY_NAME_CLASSNAME = 'history__item__name';
+const HISOTRY_AMOUNT_CLASSNAME = 'history__item__amount';
+const HISOTRY_ITEM_CLASSNAME = 'history__item';
+
+const ALERT_MESSAGE = 'Please add a text and amount';
+
+const TRANSACTION_KEY = 'transactions';
 
 let transactions = [];
 
 let text;
 let amount;
 
-//TODO: use contatns
+const generateRandom = () => Math.random().toString(36).substr(2, 10);
 
 const saveTransactions = () => {
-  localStorage.setItem('transactions', JSON.stringify(transactions));
+  localStorage.setItem(TRANSACTION_KEY, JSON.stringify(transactions));
 };
 
 const addTransaction = (text, amount) => {
@@ -70,24 +79,24 @@ const renderHistory = () => {
   historyElement.innerHTML = '';
   transactions.forEach(({ id, type, amount, text }) => {
     const deleteButton = document.createElement('div');
-    deleteButton.innerText = 'X';
-    deleteButton.classList.add('history__item__delete');
+    deleteButton.innerText = DEL_BUTTON_TEXT;
+    deleteButton.classList.add(HISOTRY_DEL_CLASSNAME);
     deleteButton.addEventListener('click', onDelete);
 
     const nameElement = document.createElement('div');
     nameElement.innerText = text;
-    nameElement.classList.add('history__item__name');
+    nameElement.classList.add(HISOTRY_NAME_CLASSNAME);
 
     const amountElement = document.createElement('div');
     amountElement.innerText = type === TYPE.INCOME ? `+${amount}` : amount;
-    amountElement.classList.add('history__item__amount');
+    amountElement.classList.add(HISOTRY_AMOUNT_CLASSNAME);
 
     const historyItem = document.createElement('div');
     historyItem.appendChild(deleteButton);
     historyItem.appendChild(nameElement);
     historyItem.appendChild(amountElement);
-    historyItem.classList.add('history__item');
-    historyItem.classList.add(`history__item-${type}`);
+    historyItem.classList.add(HISOTRY_ITEM_CLASSNAME);
+    historyItem.classList.add(`${HISOTRY_ITEM_CLASSNAME}-${type}`);
     historyItem.id = id;
 
     historyElement.appendChild(historyItem);
@@ -110,7 +119,7 @@ const onDelete = (event) => {
 const onClick = (event) => {
   event.preventDefault();
   if (!textInput.value || !amountInput.value) {
-    alert('Please add a text and amount');
+    alert(ALERT_MESSAGE);
     return;
   }
   addTransaction(text, amount);
@@ -127,9 +136,9 @@ const onAmountInput = (event) => {
 };
 
 const init = () => {
-  const savedTransactions = JSON.parse(localStorage.getItem('transactions'));
+  const savedTransactions = localStorage.getItem(TRANSACTION_KEY);
   if (savedTransactions) {
-    transactions = savedTransactions;
+    transactions = JSON.parse(savedTransactions);
   }
   renderApp();
   textInput.addEventListener('input', onTextInput);
