@@ -52,7 +52,7 @@ hr {
   color: #c0392b;
 }
 
-.history__title,
+.history-title,
 .transaction__title {
   padding-bottom: 10px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
@@ -71,17 +71,19 @@ hr {
   position: relative;
 }
 
-.history__item__delete {
-  position: absolute;
-  left: -20px;
-  padding: 3px;
-  opacity: 0;
-  transition: opacity 3s ease-in;
-  cursor: pointer;
+.history__item:hover .history__item__delete {
+  opacity: 1;
+  color: white;
+  background-color: red;
+  transition: opacity 0.3s ease-in, background-color 0.3s ease-in;
 }
 
-.fade-in {
-  opacity: 1;
+.history__item__delete {
+  position: absolute;
+  left: -15px;
+  padding: 3px 5px;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .history__item-income {

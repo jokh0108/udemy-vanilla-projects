@@ -72,9 +72,7 @@ const renderHistory = () => {
     const deleteButton = document.createElement('div');
     deleteButton.innerText = 'X';
     deleteButton.classList.add('history__item__delete');
-    deleteButton.classList.add('fade-in');
     deleteButton.addEventListener('click', onDelete);
-    // TODO: make fadein effect
 
     const nameElement = document.createElement('div');
     nameElement.innerText = text;
