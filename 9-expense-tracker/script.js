@@ -11,7 +11,7 @@ const TYPE = Object.freeze({
   EXPENSE: 'expense',
 });
 
-const generateRandom = () => Math.random().toString().substr(2, 10);
+const generateRandom = () => Math.random().toString(36).substr(2, 10);
 
 let transactions = [
   { id: generateRandom(), type: TYPE.INCOME, amount: 38, text: 'bitcoin sell' },
@@ -23,15 +23,29 @@ let transactions = [
 let text;
 let amount;
 
-const onTextInput = (event) => {
-  text = event.target.value;
+const addTransaction = (text, amount) => {
+  transactions = [
+    ...transactions,
+    {
+      id: generateRandom(),
+      type: isPositive(amount) ? TYPE.INCOME : TYPE.EXPENSE,
+      amount,
+      text,
+    },
+  ];
 };
 
-const onAmountInput = (event) => {
-  amount = parseInt(event.target.value);
+const removeTransaction = (id) => {
+  transactions = transactions.filter((transaction) => transaction.id !== id);
 };
 
 const isPositive = (value) => value >= 0;
+
+const renderApp = () => {
+  renderBalance();
+  renderTotal();
+  renderHistory();
+};
 
 const renderBalance = () => {
   const balance = transactions.reduce((sum, { amount }) => sum + amount, 0);
@@ -56,6 +70,7 @@ const renderHistory = () => {
     deleteButton.innerText = 'X';
     deleteButton.classList.add('history__item__delete');
     deleteButton.classList.add('fade-in');
+    deleteButton.addEventListener('click', onDelete);
     // TODO: make fadein effect
 
     const nameElement = document.createElement('div');
@@ -78,12 +93,6 @@ const renderHistory = () => {
   });
 };
 
-const renderApp = () => {
-  renderBalance();
-  renderTotal();
-  renderHistory();
-};
-
 const clearInput = () => {
   textInput.value = '';
   amountInput.value = '';
@@ -91,11 +100,10 @@ const clearInput = () => {
   amonut = 0;
 };
 
-const addTransaction = (text, amount) => {
-  transactions = [
-    ...transactions,
-    { type: isPositive(amount) ? TYPE.INCOME : TYPE.EXPENSE, amount, text },
-  ];
+const onDelete = (event) => {
+  const parentNode = event.target.parentNode;
+  removeTransaction(parentNode.id);
+  renderApp();
 };
 
 const onClick = (event) => {
@@ -108,6 +116,14 @@ const onClick = (event) => {
   renderApp();
   clearInput();
   console.log(transactions);
+};
+
+const onTextInput = (event) => {
+  text = event.target.value;
+};
+
+const onAmountInput = (event) => {
+  amount = parseInt(event.target.value);
 };
 
 const init = () => {
