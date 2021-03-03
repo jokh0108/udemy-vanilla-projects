@@ -14,12 +14,10 @@ const TYPE = Object.freeze({
 const generateRandom = () => Math.random().toString().substr(2, 10);
 
 let transactions = [
-  { id: generateRandom(), type: TYPE.INCOME, amount: 1, text: 'income' },
-  { id: generateRandom(), type: TYPE.EXPENSE, amount: -1, text: 'expense' },
-  { id: generateRandom(), type: TYPE.INCOME, amount: 38, text: 'income' },
-  { id: generateRandom(), type: TYPE.EXPENSE, amount: -11, text: 'expense' },
-  { id: generateRandom(), type: TYPE.INCOME, amount: 42, text: 'income' },
-  { id: generateRandom(), type: TYPE.EXPENSE, amount: -31, text: 'expense' },
+  { id: generateRandom(), type: TYPE.INCOME, amount: 38, text: 'bitcoin sell' },
+  { id: generateRandom(), type: TYPE.EXPENSE, amount: -11, text: 'book' },
+  { id: generateRandom(), type: TYPE.INCOME, amount: 42, text: 'stock sell' },
+  { id: generateRandom(), type: TYPE.EXPENSE, amount: -31, text: 'beef' },
 ];
 
 let text;
@@ -80,7 +78,7 @@ const renderHistory = () => {
   });
 };
 
-const renderExpense = () => {
+const renderApp = () => {
   renderBalance();
   renderTotal();
   renderHistory();
@@ -107,14 +105,14 @@ const onClick = (event) => {
     return;
   }
   addTransaction(text, amount);
-  renderExpense();
+  renderApp();
   clearInput();
   console.log(transactions);
 };
 
 const init = () => {
   // TODO: Use localstorsage
-  renderExpense();
+  renderApp();
   textInput.addEventListener('input', onTextInput);
   amountInput.addEventListener('input', onAmountInput);
   addButton.addEventListener('click', onClick);
