@@ -10,3 +10,5 @@
 | 04  | [Exchange Rate Calculator](https://github.com/jokh0108/udemy-vanilla-projects/tree/main/4-exchange-rate-calculator) | [#](https://jokh0108.github.io/udemy-vanilla-projects/4-exchange-rate-calculator/) |     ✅     |
 | 05  | [DOM Array Methods Project](https://github.com/jokh0108/udemy-vanilla-projects/tree/main/5-dom-array-methods)       | [#](https://jokh0108.github.io/udemy-vanilla-projects/5-dom-array-methods/)        |     ✅     |
 | 08  | [Mealfinder App](https://github.com/jokh0108/udemy-vanilla-projects/tree/main/8-meal-finder-app)                    | [#](https://jokh0108.github.io/udemy-vanilla-projects/8-meal-finder-app/)          |     ✅     |
+| 09  | [Expense Tracker](https://github.com/jokh0108/udemy-vanilla-projects/tree/main/9-expense-tracker)                   | [#](https://jokh0108.github.io/udemy-vanilla-projects/9-expense-tracker/)          |     ✅     |
+| 11  | [Infinite Scrolling](https://github.com/jokh0108/udemy-vanilla-projects/tree/main/11-infinite-scrolling)            | [#](https://jokh0108.github.io/udemy-vanilla-projects/11-infinite-scrolling/)      |     ✅     |
