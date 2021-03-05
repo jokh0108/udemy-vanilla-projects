@@ -53,12 +53,23 @@ const addPosts = async () => {
   const newPosts = await getPosts();
   extendPosts(newPosts);
   renderPost(posts);
+  filterInput.value = '';
+};
+
+const onInput = (event) => {
+  const keyword = event.target.value;
+  const filteredPosts = posts.filter(
+    (post) =>
+      post.title.indexOf(keyword) >= 0 || post.body.indexOf(keyword) >= 0
+  );
+  renderPost(filteredPosts);
 };
 
 const init = async () => {
   await addPosts();
   page += 1;
   await addPosts();
+  filterInput.addEventListener('input', onInput);
 };
 
 init();
