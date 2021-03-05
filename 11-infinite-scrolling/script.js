@@ -1,14 +1,13 @@
 const filterInput = document.querySelector('#jsFilterInput');
 const post = document.querySelector('#jsPost');
-const loader = document.querySelector('.loader');
+const loading = document.querySelector('.loader');
 
-const LIMIT = 3;
-const PAGE = 1;
+const LIMIT = 6;
 
+let page = 1;
 let posts = [];
 
 const extendPosts = (newPosts) => {
-  console.log(newPosts);
   posts = [...posts, ...newPosts];
 };
 
@@ -41,7 +40,7 @@ const renderPost = (posts) => {
 const getPosts = async () => {
   try {
     const response = await fetch(
-      `https://jsonplaceholder.typicode.com/posts?_limit=${LIMIT}&_page=${PAGE}`
+      `https://jsonplaceholder.typicode.com/posts?_limit=${LIMIT}&_page=${page}`
     );
     const data = await response.json();
     return data;
@@ -57,8 +56,9 @@ const addPosts = async () => {
 };
 
 const init = async () => {
-  addPosts();
-  addPosts();
+  await addPosts();
+  page += 1;
+  await addPosts();
 };
 
 init();
@@ -66,6 +66,11 @@ init();
 window.addEventListener('scroll', () => {
   const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
   if (scrollTop + clientHeight >= scrollHeight - 5) {
-    loader.classList.add('show');
+    loading.classList.add('show');
+    setTimeout(() => {
+      loading.classList.remove('show');
+      page += 1;
+      addPosts();
+    }, 1000);
   }
 });
