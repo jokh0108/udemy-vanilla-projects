@@ -66,3 +66,40 @@ li.post__item {
 }
 
 /* TODO: css loader */
+.loader {
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader.show {
+  opacity: 1;
+}
+
+.ball {
+  margin: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  animation: bounce 0.5s ease infinite;
+}
+
+.ball:nth-last-of-type(2) {
+  animation-delay: 0.1s;
+}
+
+.ball:nth-last-of-type(3) {
+  animation-delay: 0.2s;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

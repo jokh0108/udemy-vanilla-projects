@@ -22,23 +22,6 @@ let dummyPosts = [
     content:
       'est rerum tempore vitae sequi sint nihil reprehenderit dolor beatae ea dolores neque fugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis qui aperiam non debitis possimus qui neque nisi nulla',
   },
-  {
-    id: 4,
-    title: 'qui est esse',
-    content:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis tempore cupiditate amet illum nostrum voluptatem nisi ab recusandae voluptate quaerat, commodi sed soluta eos nesciunt aut id eius consequatur. Mollitia!',
-  },
-  {
-    id: 5,
-    title: 'qui est esse',
-    content:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis tempore cupiditate amet illum nostrum voluptatem nisi ab recusandae voluptate quaerat, commodi sed soluta eos nesciunt aut id eius consequatur. Mollitia!',
-  },
-  {
-    id: 6,
-    title: 'gggggg',
-    content: 'kkkk',
-  },
 ];
 
 const renderPost = () => {
