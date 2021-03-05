@@ -1,5 +1,6 @@
 const filterInput = document.querySelector('#jsFilterInput');
 const post = document.querySelector('#jsPost');
+const loader = document.querySelector('.loader');
 
 const LIMIT = 3;
 const PAGE = 1;
@@ -57,6 +58,14 @@ const addPosts = async () => {
 
 const init = async () => {
   addPosts();
+  addPosts();
 };
 
 init();
+
+window.addEventListener('scroll', () => {
+  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+  if (scrollTop + clientHeight >= scrollHeight - 5) {
+    loader.classList.add('show');
+  }
+});
