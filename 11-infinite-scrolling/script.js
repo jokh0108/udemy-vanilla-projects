@@ -1,31 +1,18 @@
 const filterInput = document.querySelector('#jsFilterInput');
 const post = document.querySelector('#jsPost');
 
-let dummyPosts = [
-  {
-    id: 1,
-    title: 'qui est esse',
-    content:
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis tempore cupiditate amet illum nostrum voluptatem nisi ab recusandae voluptate quaerat, commodi sed soluta eos nesciunt aut id eius consequatur. Mollitia!',
-  },
-  {
-    id: 2,
-    title:
-      'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
-    content:
-      'quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto',
-  },
-  {
-    id: 3,
-    title:
-      'sunt aut facere repellat provident occaecati excepturi optio reprehenderit',
-    content:
-      'est rerum tempore vitae sequi sint nihil reprehenderit dolor beatae ea dolores neque fugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis qui aperiam non debitis possimus qui neque nisi nulla',
-  },
-];
+const LIMIT = 3;
+const PAGE = 1;
+
+let posts = [];
+
+const extendPosts = (newPosts) => {
+  console.log(newPosts);
+  posts = [...posts, ...newPosts];
+};
 
 const renderPost = () => {
-  dummyPosts.forEach(({ id, title, content }) => {
+  posts.forEach(({ id, title, body }) => {
     const postItem = document.createElement('li');
     postItem.classList.add('post__item');
 
@@ -39,7 +26,7 @@ const renderPost = () => {
 
     const postContent = document.createElement('p');
     postContent.classList.add('post__item__content');
-    postContent.innerText = content;
+    postContent.innerText = body;
 
     postItem.appendChild(postNumber);
     postItem.appendChild(postTitle);
@@ -49,8 +36,26 @@ const renderPost = () => {
   });
 };
 
-const init = () => {
+const getPosts = async () => {
+  try {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/posts?_limit=${LIMIT}&_page=${PAGE}`
+    );
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const addPosts = async () => {
+  const newPosts = await getPosts();
+  extendPosts(newPosts);
   renderPost();
+};
+
+const init = async () => {
+  addPosts();
 };
 
 init();
