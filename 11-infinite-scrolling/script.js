@@ -11,7 +11,8 @@ const extendPosts = (newPosts) => {
   posts = [...posts, ...newPosts];
 };
 
-const renderPost = () => {
+const renderPost = (posts) => {
+  post.innerHTML = '';
   posts.forEach(({ id, title, body }) => {
     const postItem = document.createElement('li');
     postItem.classList.add('post__item');
@@ -51,7 +52,7 @@ const getPosts = async () => {
 const addPosts = async () => {
   const newPosts = await getPosts();
   extendPosts(newPosts);
-  renderPost();
+  renderPost(posts);
 };
 
 const init = async () => {
