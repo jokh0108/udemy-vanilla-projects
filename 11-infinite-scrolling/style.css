@@ -65,7 +65,6 @@ li.post__item {
   border-radius: 20px;
 }
 
-/* TODO: css loader */
 .loader {
   opacity: 0;
   display: flex;

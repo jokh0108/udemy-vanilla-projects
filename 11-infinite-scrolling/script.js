@@ -25,7 +25,6 @@ let dummyPosts = [
 ];
 
 const renderPost = () => {
-  post.innerHTML = '';
   dummyPosts.forEach(({ id, title, content }) => {
     const postItem = document.createElement('li');
     postItem.classList.add('post__item');
